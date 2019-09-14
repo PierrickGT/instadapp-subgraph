@@ -1,0 +1,17 @@
+{
+  "name": "instadapp-subgraph",
+  "license": "MIT",
+  "version": "0.1.0",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ PierrickGT/InstaDApp",
+    "create-local": "graph create --node http://localhost:8020/ PierrickGT/InstaDApp",
+    "remove-local": "graph remove --node http://localhost:8020/ PierrickGT/InstaDApp",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 PierrickGT/InstaDApp"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "0.15.0",
+    "@graphprotocol/graph-ts": "0.15.1"
+  }
+}

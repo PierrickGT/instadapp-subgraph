@@ -1,0 +1,57 @@
+type UserWallet @entity {
+    id: ID!
+    address: Bytes!
+    owner: Bytes!
+    transactionHash: Bytes!
+    timestamp: BigInt!
+}
+
+type UserWalletTransferred @entity {
+    id: ID!
+    address: Bytes!
+    currentOwner: Bytes!
+    nextOwner: Bytes!
+    transactionHash: Bytes!
+    timestamp: BigInt!
+}
+
+type OpenedCDP @entity {
+    id: ID!
+    cdpNumber: BigInt!
+    owner: Bytes!
+    transactionHash: Bytes!
+    timestamp: BigInt!
+}
+
+type WipedCDP @entity {
+    id: ID!
+    cdpNumber: BigInt!
+    owner: Bytes!
+    daiAmount: BigInt!
+    daiFee: BigInt!
+    makerFee: BigInt!
+    transactionHash: Bytes!
+    timestamp: BigInt!
+}
+
+type CompoundToMaker @entity {
+    id: ID!
+    cdpNumber: BigInt!
+    daiAmount: BigInt!
+    ethAmount: BigInt!
+    fees: BigInt!
+    owner: Bytes!
+    transactionHash: Bytes!
+    timestamp: BigInt!
+}
+
+type MakerToCompound @entity {
+    id: ID!
+    cdpNumber: BigInt!
+    daiAmount: BigInt!
+    ethAmount: BigInt!
+    fees: BigInt!
+    owner: Bytes!
+    transactionHash: Bytes!
+    timestamp: BigInt!
+}

@@ -1,0 +1,56 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Registry
+    network: mainnet
+    source:
+      address: "0x498b3BfaBE9F73db90D252bCD4Fa9548Cd0Fd981"
+      abi: InstaRegistry
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - UserWallet
+        - UserWalletTransferred
+      abis:
+        - name: InstaRegistry
+          file: ./abis/InstaRegistry.json
+        - name: UserWallet
+          file: ./abis/UserWallet.json
+      eventHandlers:
+        - event: LogRecord(indexed address,indexed address,address)
+          handler: handleLogRecord
+      file: ./src/mappings/UserWallet.ts
+  - kind: ethereum/contract
+    name: Bridges
+    network: mainnet
+    source:
+      address: "0x37aCfEf331e6063C8507C2A69c97B4f78c770A5A"
+      abi: MakerCompoundBridge
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - LogCompoundToMaker
+        - MakerToCompound
+        - OpenedCDP
+        - WipedCDP
+      abis:
+        - name: MakerCompoundBridge
+          file: ./abis/MakerCompoundBridge.json
+        - name: TubInterface
+          file: ./abis/TubInterface.json
+      eventHandlers:
+        - event: LogCompoundToMaker(uint256,uint256,uint256,uint256,address)
+          handler: handleLogCompoundToMaker
+        - event: LogMakerToCompound(uint256,uint256,uint256,uint256,address)
+          handler: handleLogMakerToCompound
+        - event: LogOpen(uint256,address)
+          handler: handleLogOpen
+        - event: LogWipe(uint256,uint256,uint256,uint256,address)
+          handler: handleLogWipe
+      file: ./src/mappings/MakerCompoundBridge.ts
