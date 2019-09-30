@@ -6,7 +6,7 @@ This subgraph has been created to participate to The Graph online hackathon who 
 
 You can use the following explorer to explore the data available on the mainnet.
 
-https://pierrickgt.github.io/instadapp-subgraph-explorer/
+https://instadapp.pierrickgt.now.sh/
 
 ## Contracts & Events
 
