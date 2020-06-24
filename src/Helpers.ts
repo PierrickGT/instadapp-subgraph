@@ -1,12 +1,12 @@
-import { EthereumEvent } from '@graphprotocol/graph-ts';
+import { ethereum } from '@graphprotocol/graph-ts';
 
 /**
  * Should be called to create a unique ID
  * @method createEventID
- * @param {EthereumEvent} event Event from log function in mapping file
+ * @param {ethereum.Event} event Event from log function in mapping file
  * @returns {String} Unique ID
  */
-export function createEventID(event: EthereumEvent): string {
+export function createEventID(event: ethereum.Event): string {
     return event.block.number
         .toString()
         .concat('-')

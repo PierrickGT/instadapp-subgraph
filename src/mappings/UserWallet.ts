@@ -27,7 +27,7 @@ export function handleLogRecord(event: LogRecord): void {
         userWalletTransferred.save();
 
         // We remove contract address who has been transferred in order to save it again with the current owner
-        store.remove('userWallet', event.params.proxy.toHexString());
+        store.remove('UserWallet', event.params.proxy.toHexString());
 
         userWallet.address = event.params.proxy;
         userWallet.owner = event.params.nextOwner;
